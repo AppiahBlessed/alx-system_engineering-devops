@@ -1,0 +1,2 @@
+#!/bash/bin 
+chmode u+x hello
