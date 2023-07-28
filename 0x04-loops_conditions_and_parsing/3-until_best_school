@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Prints 'Best School' 10 times using <until>
+
+number=0
+
+until [ $number -eq 10 ]
+do
+	echo "Best School"
+	(( number++ ))
+done
