@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Write a Bash script that displays numbers from 1 to 100.
+
+number=0
+while [ "$number" -lt 101 ]
+do
+	if [[ $((number%3) -eq 0) && $(($number%5) -eq 0) ]];
+	then
+		echo "FizzBuzz"
+	elif [[ $(($number%3) -eq 0) ]];
+	then
+		echo "Fizz"
+	elif [[ $(($number%5) -eq 0) ]];
+	then
+		echo "Buzz"
+	fi
+	((number++))
+done
