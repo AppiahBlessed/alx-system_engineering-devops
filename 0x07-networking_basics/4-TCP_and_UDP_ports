@@ -1,0 +1,4 @@
+#!/usr/bin/env bash 
+# Command that shows listening sockets(Refer to README for question)
+
+netstat -tulnep
