@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+user="ubuntu"
+host="server01"
+key="~/.ssh/school"
+
+ssh -i "$key" "$user@$host"
