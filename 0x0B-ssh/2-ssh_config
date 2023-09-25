@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Client configuration file
+
+Host myserver
+  Hostname 98.98.98.98  # The server IP
+  User ubuntu  # TVhe specified userv
+  IdentifyFile ~/.ssh/school  # The private key file to use
+  PasswordAuthentication no  # Refuse passphrase authentication 

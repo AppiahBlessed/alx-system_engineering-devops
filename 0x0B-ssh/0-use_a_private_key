@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-user="ubuntu"
-host="server01"
-key="~/.ssh/school"
+# Connectvs to specifvied server
 
-ssh -i "$key" "$user@$host"
+ssh -i ~/.ssh/school ubuntu@54.175.147.63
