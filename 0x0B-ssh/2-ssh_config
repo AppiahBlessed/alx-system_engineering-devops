@@ -3,4 +3,4 @@
 
 Host myserver
   PasswordAuthentication no  # Refuse passphrase authentication 
-  IdentityFile ~/.ssh/school  # The private key file to use
+  IdentifyFile ~/.ssh/school  # The private key file to use
