@@ -2,5 +2,5 @@
 # Client configuration file
 
 Host myserver
-  IdentityFile ~/.ssh/school  # The private key file to use
   PasswordAuthentication no  # Refuse passphrase authentication 
+  IdentityFile ~/.ssh/school  # The private key file to use
