@@ -1,4 +1,4 @@
-# Installs a Nginx server
+	# Use puppet to install nginx
 
 exec {'install':
   provider => shell,
