@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# This file script set an nginix configuaration and includes and redirects
+
+# Install Nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+# Allow HTTP traffic through UFW
+sudo ufw allow 'Nginx HTTP'
+
+# Write to defined file
+echo 'Hello World!' | sudo tee /var/www/html/index.nginx-debian.html
+# Re-configur the default file to read from index.html
+sudo tee /etc/nginx/sites-available/redirect_me <<EOF
+server {
+    listen 80 default_server;
+    server_name _;
+    
+    location /redirect_me/ {
+      # Get the used url
+      set \$redirect_url \$request_uri;
+      return 301 \$redirect_url;
+    }
+
+    location / {
+        try_files \$uri \$uri/ =404;
+    }
+}
+EOF
+
+# Create a symbolic link to enable the redirection site
+sudo ln -s /etc/nginx/sites-available/redirect_me /etc/nginx/sites-enabled/
+
+# Lets restart nginx serice
+sudo service nginx restart
