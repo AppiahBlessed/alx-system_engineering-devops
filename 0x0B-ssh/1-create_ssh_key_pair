@@ -2,4 +2,8 @@
 # Bash script that creates an RSA key pair, stored at school
 # With the pre-defined passphrase as betty.
 
-ssh-keygen -t rsa -b 4096 -f school -N betty
+key_name="school"
+key_bits=4096
+pass="betty"
+# t flag for type, b for bits, f for file and N for passphrase
+ssh-keygen -t rsa -b "$key_bits" -N "$pass" -f "$key_name"
