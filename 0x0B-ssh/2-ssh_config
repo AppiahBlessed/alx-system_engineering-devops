@@ -1,5 +1,4 @@
 # Client configuration file
-
 Host *
-  PasswordAuthentication no  # Refuse passphrase authentication 
-  IdentifyFile ~/.ssh/school  # The private key file to use
+      PasswordAuthentication no
+      IdentifyFile ~/.ssh/school
