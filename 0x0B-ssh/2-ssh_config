@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Client configuration file
 
-Host myserver
+Host *
   PasswordAuthentication no  # Refuse passphrase authentication 
   IdentifyFile ~/.ssh/school  # The private key file to use
