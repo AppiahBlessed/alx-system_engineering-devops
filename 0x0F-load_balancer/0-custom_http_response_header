@@ -3,11 +3,6 @@
 # such that it contains a header that describes the server that responded
 # To the request
 
-#!/usr/bin/env bash
-# This bash script configures an nginx config file for two web servers
-# such that it contains a header that describes the server that responded
-# To the request
-
 # Update system and install nginx
 sudo apt  -y update
 sudo apt install -y nginx
