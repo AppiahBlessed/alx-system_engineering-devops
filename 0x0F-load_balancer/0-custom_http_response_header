@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# This bash script configures an nginx config file for two web servers
+# such that it contains a header that describes the server that responded
+# To the request
+
+#!/usr/bin/env bash
+# This bash script configures an nginx config file for two web servers
+# such that it contains a header that describes the server that responded
+# To the request
+
+# Update system and install nginx
+sudo apt  -y update
+sudo apt install -y nginx
+
+# Function to set up the config file
+configure() {
+	  filepath="/etc/nginx/sites-available/default"
+
+	    # Modify the Nginx default configuration
+	      sudo tee "$filepath" > /dev/null <<EOF
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root /var/www/html;
+    index index.html;
+        server_name _;
+
+    location / {
+        try_files \$uri \$uri/ =404;
+    }
+
+    add_header X-Served-By: \$server_addr;
+}
+EOF
+
+  # Reload the server
+    sudo service nginx reload
+}
+
+# Call the function to configure Nginx
+configure
+
