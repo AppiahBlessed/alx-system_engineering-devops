@@ -1,4 +1,0 @@
-# Client configuration file with set location for pkey and no authentication
-Host *
-      PasswordAuthentication no
-      IdentifyFile ~/.ssh/school
