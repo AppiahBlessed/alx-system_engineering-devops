@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
+# This file connects to a serer
 ssh -i ~/.ssh/school ubuntu@3.94.185.128
