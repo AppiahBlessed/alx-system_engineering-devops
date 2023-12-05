@@ -1,0 +1,5 @@
+Host myserver
+    HostName 3.94.185.128
+    User ubuntu
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication no
