@@ -1,14 +1,14 @@
-# Thiss is a puppet manifest that re-configures an ssh config file
+# 100-puppet_ssh_config.pp
 
-file { "~/.ssh/school":
-  ensure  => present,
-  content => @("EOF"),
-# Global settig
-# Host settings
-  Host myserver
-    HostName 3.94.185.128
-    User ubuntu
-    IdentityFile ~/.ssh/school
-    PasswordAuthentication no
-EOF
+file_line { 'Turn off passwd auth':
+  path  => '/etc/ssh/ssh_config',
+  line  => 'PasswordAuthentication no',
+  match => '^#?PasswordAuthentication',
 }
+
+file_line { 'Declare identity file':
+  path  => '/etc/ssh/ssh_config',
+  line  => 'IdentityFile ~/.ssh/school',
+  match => '^#?IdentityFile',
+}
+
