@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# This files installs nginx on a serer
+
+# Update sustem package installer
+apt-get update
+
+# Install the web serer
+apt-get install -y nginx
+
+# Start nginx
+service nginx start
+
+# Create the file to write into
+touch index.html
+
+# Change permissions (Not really important)
+chmod 644 index.html
+
+# Content of html file
+echo '<html><head><title>Hello World</title></head><body>Hello World!</body></html>' > /var/www/html/index.html
+
+# Reload nginx for changes to take place
+service nginx reload
