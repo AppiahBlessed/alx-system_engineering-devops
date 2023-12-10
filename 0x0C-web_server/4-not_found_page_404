@@ -1,15 +1,38 @@
 #!/usr/bin/env bash
-# This script configures nginx to set up a 404 not found
+# This is a 404 directie and redirection of nginx
 
 apt-get update
 apt-get install -y nginx
 
-sed -i '/server {/a \
-    error_page 404 /404.html; \
-    location = /404.html { \
-        root /usr/share/nginx/html; \
-        internal; \
-        return 404 "<html><head><title>404 Not Found</title></head><body>Ceci n'\''est pas une page</body></html>"; \
-    }' /etc/nginx/sites-available/default
+# Configure Nginx for 301 redirection
+cat <<EOL > /etc/nginx/sites-available/default
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
 
-service nginx reload
+    root /var/www/html;
+    index index.html index.htm;
+
+    server_name web-01;
+
+    # Custom 404 page
+    error_page 404 /custom_404;
+
+    location = /custom_404 {
+        internal;
+        return 404 "Ceci n'est pas une page";
+    }
+
+    location /redirect_me {
+        return 301 http://example.com/destination;
+    }
+
+    # 404 not found
+    location / {
+        try_files \$uri \$uri/ =404;
+    }
+}
+EOL
+
+# Reload Nginx to apply changes
+systemctl reload nginx
