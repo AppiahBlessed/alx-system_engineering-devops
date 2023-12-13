@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# This script configures an haproxy load balancer
+# Such that it uses a round-robin algorithim in managing traffic
+# It can be managed ia an init script
+
+# Update and install haproxy
+sudo apt-get update
+sudo apt-get -y install haproxy
+
+# Config file should be the following
+config=\
+"
+frontend Appiah_frontend
+        bind *:80
+        mode http
+        default_backend Appiah_backend
+backend Appiah_backend
+        balance roundrobin
+        server 309528-web-01 3.89.160.77:80 check
+        server 309528-web-02 107.21.13.10:80 check
+"
+
+# Writw configuratiion to sever config file
+echo "$config" | sudo tee -a /etc/haproxy/haproxy.cfg
+
+# Enable serer to start on boot
+echo "ENABLED=1" | sudo -tee -a /etc/default/haproxy
+
+# reload serer
+sudo service haproxy restart

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# This script customizes a GET response header
+
+# Install nginx
+if command - nginx &> /dev/null; then
+        sudo apt-get update
+        sudo apt-get install -y nginx
+fi
+
+config_file="/etc/nginx/sites-available/default"
+if ! grep -q "add_header X-Served-By \$hostname;" "$config_file"; then
+        sudo cp "$config_file" "${config_file}.bak"
+        sudo sed -i '/server_name/ a \ \ \ \ add_header X-Served-By $hostname;' "$config_file"
+else
+        echo "Already executed"
+fi
+sudo systemctl reload nginx
