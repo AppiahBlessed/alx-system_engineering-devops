@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# This bash script displays information about the
+# ...subdomains of alphace.tech
+
+# Function to display the information
+display() {
+    local domain=$1
+    local sub=$2
+
+    # Get result of dig IP
+    # +short is used to get only the ip of the domain
+    local querried_dns=$(dig "$sub.$domain" | grep -A1 'ANSWER SECTION:')
+
+    # determine the record type of domain or sub
+    local record=$(echo "$querried_dns" | awk 'NR==2{print $4}')
+
+    # Get the ip
+    local ip=$(echo "$querried_dns" | awk 'NR==2{print $5}')
+
+    # Display result string
+    echo "The subdoamin $sub is a $record record and points to $ip"
+}
+
+# Main script
+main() {
+    local domain=$1
+    local sub=$2
+    local subdomains=("www" "lb-01" "web-01" "web-02")
+
+    # display info for the subs
+    if [ -n "$sub" ]; then
+        display "$domain" "$sub"
+    else
+        for subs in "${subdomains[@]}"; do
+            display "$domain" "$subs"
+        done
+    fi
+}
+main "$1" "$2"
