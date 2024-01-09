@@ -1,0 +1,31 @@
+#!/bin/bash
+# This script compresses and dumps mysql database in compressed file
+
+# Get password for mysql root user
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 <mysql_root_password>"
+    exit 1
+fi
+
+# The Bash script accepts one argument that is...
+# -the password used to connect to the MySQL database
+pass=$1
+
+# The MySQL dump must be named backup.sql
+backup_file="backup.sql"
+
+# This archive must have the following name format: day-month-year.tar.gz
+date_created=$(date +%d-%m-%y)
+
+backup_archive="date_created.tar.gz"
+
+# The MySQL dump must contain all your MySQL databases
+# The user to connect to the MySQL database must be root
+mysqldump -u root -p$1 --all-databases > $backup_file
+
+# The MySQL dump file has to be compressed to a tar.gz archive
+tar -czf $backup_archive $backup_file
+
+if [ $? -eq 0 ]; then
+    echo "Backup archive created: $backup_archive"
+    rm $backup_file
