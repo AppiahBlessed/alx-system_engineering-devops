@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # This script compresses and dumps mysql database in compressed file
 
 # Get password for mysql root user
