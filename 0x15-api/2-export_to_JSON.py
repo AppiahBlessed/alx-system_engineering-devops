@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """This script uses JSON Placeholder"""
-mport json
+# Importing module
+import json
 import requests
 import sys
 

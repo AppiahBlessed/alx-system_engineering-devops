@@ -1,5 +1,6 @@
 '''This script fetches all data from a JSON Placeholder API'''
 
+# Imports
 if __name__ == "__main__":
     import json
     import requests
