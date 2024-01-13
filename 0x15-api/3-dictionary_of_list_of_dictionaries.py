@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""This script fetches all data from a JSON Placeholder API
-    -Export data in the JSON format.
-"""
+'''This script fetches all data from a JSON Placeholder API'''
 
 import json
 import requests

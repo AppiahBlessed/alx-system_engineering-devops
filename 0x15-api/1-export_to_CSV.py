@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""This script uses JSON Placeholder
-  - This REST API has fake data that can be used for testing
-"""
+'''This script uses JSON Placeholder'''
 # Import files
 import csv
 import requests
