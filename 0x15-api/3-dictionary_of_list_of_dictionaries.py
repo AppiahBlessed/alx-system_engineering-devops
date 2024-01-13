@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 '''This script fetches all data from a JSON Placeholder API'''
 
 # Imports
