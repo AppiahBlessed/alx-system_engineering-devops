@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """This script uses JSON Placeholder
   - This REST API has fake data that can be used for testing
 """
