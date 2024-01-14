@@ -18,16 +18,16 @@ if __name__ == "__main__":
     emp_name = id_data["name"]
 
     # The completed number of tasks
-    todo_url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
-    todo_result = requests.get(todo_url)
+    t_url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
+    todo_result = requests.get(t_url)
 
     # Error handling
     if user_data.status_code != 200:
-        print(f"Error: Unable to fetch user data. Status code: {user_data.status_code}")
+        print(f"Error:Status code: {user_data.status_code}")
         sys.exit(1)
 
     if todo_result.status_code != 200:
-        print(f"Error: Unable to fetch TODO data. Status code: {todo_result.status_code}")
+        print(f"Error:Status code: {todo_result.status_code}")
         sys.exit(1)
 
     # Result is a json list
@@ -36,12 +36,12 @@ if __name__ == "__main__":
     # Initialize count
     count = 0
     for key in todo_data:
-        if key["completed"] == True:
+        if key["completed"] is True:
             count += 1
 
     print(f"Employee {emp_name} is done with tasks ({count}/20):")
     for key in todo_data:
-        if key["completed"] == True:
+        if key["completed"] is True:
             # I would have used " instead of ' but the interpreter
             # might take the other one as the end of the f string
             print(f"\t {key['title']}")

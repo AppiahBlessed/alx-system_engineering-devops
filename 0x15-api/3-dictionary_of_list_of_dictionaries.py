@@ -20,14 +20,21 @@ if __name__ == "__main__":
         username = user["username"]
 
         # Endpoint for TODO list for the current user
-        todo_url = f"https://jsonplaceholder.typicode.com/todos?userId={user_id}"
+        t_url = f"https://jsonplaceholder.typicode.com/todos?userId={user_id}"
 
         # Make request
-        todo_response = requests.get(todo_url)
+        todo_response = requests.get(t_url)
         todo_data = todo_response.json()
 
         # Create a list of tasks in the specified format for the current user
-        tasks_list = [{"username": username, "task": todo["title"], "completed": todo["completed"]} for todo in todo_data]
+        tasks_list = [
+            {
+                "username": username,
+                "task": todo["title"],
+                "completed": todo["completed"]
+            }
+            for todo in todo_data
+        ]
 
         # Add the tasks list to the dictionary with the user_id as the key
         all_tasks_data[str(user_id)] = tasks_list

@@ -21,10 +21,10 @@ if __name__ == "__main__":
     user_id = user_data["id"]
 
     # Endpoint for TODO list
-    todo_url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
+    t_url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
 
     # Make request
-    todo_response = requests.get(todo_url)
+    todo_response = requests.get(t_url)
     todo_data = todo_response.json()
 
     # Any file saved would be named with the id argument passed
@@ -35,5 +35,9 @@ if __name__ == "__main__":
         # quotechar="'" To prevent triplicating
         csv_writer = csv.writer(csv_file, quotechar="'")
         for todo in todo_data:
-            csv_writer.writerow([f'"{user_id}"', f'"{username}"', f'"{todo["completed"]}"', f'"{todo["title"]}"'])
-
+            csv_writer.writerow([
+                f'"{user_id}"',
+                f'"{username}"',
+                f'"{todo["completed"]}"',
+                f'"{todo["title"]}"'
+            ])
