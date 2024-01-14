@@ -1,3 +1,4 @@
+#!/bin/bash
 # NAT table rules
 *nat
 :PREROUTING ACCEPT [0:0]
