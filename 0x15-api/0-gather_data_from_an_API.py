@@ -39,7 +39,7 @@ if __name__ == "__main__":
         if key["completed"] is True:
             count += 1
 
-    print(f"Employee {emp_name} is done with tasks ({count}/20):")
+    print(f"Employee {emp_name} is done with tasks({count}/20):")
     for key in todo_data:
         if key["completed"] is True:
             # I would have used " instead of ' but the interpreter
