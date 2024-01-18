@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """This script querries the API for reddit sand returns
     - the first 10 hot posts listed for a given subreddit.
 """
