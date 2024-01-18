@@ -19,7 +19,7 @@ def number_of_subscribers(subreddit):
             # Parse data to normal python dictionary
             data = response.json()
             # Number count
-            data_returned = data.get('data') 
+            data_returned = data.get('data')
             no_of_subscribers = data_returned.get('subscribers')
             return no_of_subscribers
         else:
