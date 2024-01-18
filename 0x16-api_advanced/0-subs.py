@@ -8,7 +8,7 @@ def number_of_subscribers(subreddit):
     # End point to get the subreddit
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
     # We set headers as specified by Reddit
-    header = {'User-Agent': 'UserAgent/1.0'}
+    header = {"User-Agent": "UserAgent/1.0"}
 
     # Try to catch any errors that would happen
     try:
@@ -19,9 +19,8 @@ def number_of_subscribers(subreddit):
             # Parse data to normal python dictionary
             data = response.json()
             # Number count
-            data_returned = data.get('data')
-            no_of_subscribers = data_returned.get('subscribers')
-            return no_of_subscribers
+            data_returned = data.get("data")
+            return data_returned.get("subscribers")
         else:
             return 0
     except Exception as er:

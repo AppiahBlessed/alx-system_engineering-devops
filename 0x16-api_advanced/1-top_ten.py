@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""This script querries the API for reddit sand returns
-    - the first 10 hot posts listed for a given subreddit.
-"""
+"""This script querries the API for reddit sand returns"""
 import requests
 
 
@@ -14,10 +12,13 @@ def top_ten(subreddit):
     # Get the headers to send to the server as required by Reddit
     header = {'User-Agent': 'UserAgent/1.0'}
 
+    params = {"limit": 10}
+
     # Try to catch any error
     try:
         # Make request to End point
-        response = requests.get(url, headers=header)
+        response = requests.get(url, headers=header, params=params,
+                                allow_redirects=False)
         # To check if the subreddit is invalid
         if response:
             if response.status_code == 200:
