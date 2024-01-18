@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-import requests
 """This script querries the Reddit API and manipulates the data
     - Returns the number of subscribers
 """
+import requests
 
 
 def number_of_subscribers(subreddit):
