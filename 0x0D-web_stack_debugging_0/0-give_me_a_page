@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# This script configures apache2 server to display "Hello Holberton"
+
+service apache2 start
+echo "Hello Holberton" > /var/www/html/index.html
+sudo service apache2 restart
+exit
