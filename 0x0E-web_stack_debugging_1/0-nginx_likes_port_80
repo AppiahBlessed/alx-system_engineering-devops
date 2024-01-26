@@ -4,4 +4,4 @@
 rm /etc/nginx/sites-enabled/default
 # Create a symbolic link to use the default configuaration file
 ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-systemctl restart nginx
+service nginx restart
