@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # This script sets the listening port of nginx to 80
 
-sed -i 's/listen [::]:80 default_server;/listen 80 default_server;/g' /etc/nginx/sites-available/default
+rm /etc/nginx/sites-enabled/default
+# Create a symbolic link to use the default configuaration file
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 systemctl restart nginx
