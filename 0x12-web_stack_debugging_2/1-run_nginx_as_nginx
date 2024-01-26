@@ -1,13 +1,7 @@
 #!/usr/bin/env bash
 # This script changes the default user of nginx to "nginx"
-
-# Change the config files to configure based on conditions
 sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
-# Use "g" to make the changes global
 sed -i "s/80/8080/g" /etc/nginx/sites-available/default
-# Give owner read and write and others readonly
 chmod 644 /etc/nginx/nginx.conf
-# Stop apache2 before starting nginx
 pkill apache2
-# Enter nginx user and execute the "nginx start"
 sudo -u nginx service nginx start
